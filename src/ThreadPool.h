@@ -31,6 +31,6 @@ private:
   FutVec futuresDone, futuresPending;
 };
 
-#include "ThreadPool.cpp"
+#include "ThreadPool.hpp"
 
 #endif // THREAD_POOL_H
