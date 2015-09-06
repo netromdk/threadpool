@@ -1,4 +1,3 @@
-#include <thread>
 #include <chrono>
 #include <iostream>
 using std::cout;
@@ -6,7 +5,7 @@ using std::endl;
 
 #include "ThreadPool.h"
 
-void f() {
+int main() {
   ThreadPool<void> pool;
   pool.queueTask([]{
       cout << "computing.." << endl;
@@ -20,18 +19,12 @@ void f() {
   cout << "before" << endl;
   pool.process([]{
       cout << "done callback!" << endl;
-      exit(0);
     });
   cout << "after" << endl;
 
-  // Simulate the program continuing while the thread pool is computing.
-  while (true) {
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-  }
-}
-
-int main() {
-  std::thread t(f);
-  t.join();
   return 0;
+
+  // When pool is to be destroyed it will join its thread if joinable. In other
+  // words, it will wait if need be instead of prematurely stopping the
+  // asynchronous computations.
 }

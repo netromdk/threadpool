@@ -21,6 +21,7 @@ public:
   /// -1 threads means to use as many threads as there are hardware threads on
   /// the system.
   ThreadPool(int threads = -1);
+  ~ThreadPool();
 
   void queueTask(const Task &task);
   void queueTask(Task &&task);

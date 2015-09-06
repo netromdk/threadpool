@@ -12,6 +12,14 @@ ThreadPool<RetType>::ThreadPool(int threads) {
 }
 
 template <typename RetType>
+ThreadPool<RetType>::~ThreadPool() {
+  // If thread is running then wait for it to complete.
+  if (thread.joinable()) {
+    thread.join();
+  }
+}
+
+template <typename RetType>
 void ThreadPool<RetType>::queueTask(const Task &task) {
   tasks.push(task);
 }
