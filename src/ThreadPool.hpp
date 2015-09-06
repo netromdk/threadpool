@@ -1,9 +1,5 @@
 #ifdef THREAD_POOL_H
 
-#include <iostream>
-using std::cout;
-using std::endl;
-
 template <typename RetType>
 ThreadPool<RetType>::ThreadPool(int threads) : threads(threads) { }
 
