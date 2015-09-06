@@ -19,3 +19,8 @@ add_executable(
   funcpool
   FuncPool.cpp
   )
+
+add_executable(
+  callback
+  Callback.cpp
+  )
