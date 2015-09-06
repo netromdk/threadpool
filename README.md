@@ -21,7 +21,7 @@ While the library is include-only there are a few test programs which can be com
 4. `cmake ..`
 5. `make`
 
-This will produce three test programs in the "bin" folder:
+This will produce the following test programs in the "bin" folder:
 * intpool - Tests a simple pool with integer results.
 * voidpool - Tests a simple pool with no results.
 * sum - Asynchronally sums all numbers of a vector.
