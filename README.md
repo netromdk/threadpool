@@ -25,6 +25,7 @@ This will produce three test programs in the "bin" folder:
 * intpool - Tests a simple pool with integer results.
 * voidpool - Tests a simple pool with no results.
 * sum - Asynchronally sums all numbers of a vector.
+* funcpool - Tests a simple pool with lvalue funcs.
 
 Usage
 =====
