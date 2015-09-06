@@ -33,6 +33,21 @@ The pool is easy to use: add some tasks and process them:
 ```cpp
 #include "ThreadPool.h"
 
+ThreadPool<void> pool;
+for (int i = 0; i < 10; i++) {
+  pool.queueTask([]{
+      /* do work */
+    });
+ }
+
+// Blocks until all tasks have been processed.
+pool.process();
+```
+
+If the tasks yield a result then those can easily be used afterwards:
+```cpp
+#include "ThreadPool.h"
+
 ThreadPool<int> pool;
 for (int i = 0; i < 10; i++) {
   pool.queueTask([]{
