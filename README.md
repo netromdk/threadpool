@@ -65,3 +65,21 @@ for (auto &future : pool.getFutures()) {
   /* use results */
 }
 ```
+
+In some cases you don't want it to be blocking so you can have it invoke a callback on completion:
+```cpp
+#include "ThreadPool.h"
+
+ThreadPool<void> pool;
+for (int i = 0; i < 10; i++) {
+  pool.queueTask([]{
+      /* do work */
+    });
+ }
+
+pool.process([]{
+    /* called when done with all tasks */
+  });
+  
+// Continues with program while tasks are being processed..
+```
