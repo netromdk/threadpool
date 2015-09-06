@@ -26,6 +26,7 @@ This will produce the following test programs in the "bin" folder:
 * voidpool - Tests a simple pool with no results.
 * sum - Asynchronally sums all numbers of a vector.
 * funcpool - Tests a simple pool with lvalue funcs.
+* callback - Tests non-blocking process() with a callback.
 
 Usage
 =====
