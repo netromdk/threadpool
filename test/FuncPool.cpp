@@ -16,7 +16,9 @@ int main() {
   cout << "Enqueuing " << amount << " tasks.." << endl;
   ThreadPool<void> pool;
   for (int i = 0; i < amount; i++) {
-    pool.queueTask(func);
+    // Add as lvalue for testing.
+    ThreadPool<void>::Task f(func);
+    pool.queueTask(f);
   }
 
   cout << "Processing.." << endl;
