@@ -20,7 +20,9 @@ public:
   /// the system.
   ThreadPool(int threads = -1);
 
-  void queueTask(Task task);
+  void queueTask(const Task &task);
+  void queueTask(Task &&task);
+
   void process();
 
   int getThreadCount() const { return threads; }

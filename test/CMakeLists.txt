@@ -14,3 +14,8 @@ add_executable(
   sum
   Sum.cpp
   )
+
+add_executable(
+  funcpool
+  FuncPool.cpp
+  )

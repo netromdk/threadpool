@@ -14,8 +14,13 @@ ThreadPool<RetType>::ThreadPool(int threads) {
 }
 
 template <typename RetType>
-void ThreadPool<RetType>::queueTask(Task task) {
+void ThreadPool<RetType>::queueTask(const Task &task) {
   tasks.push(task);
+}
+
+template <typename RetType>
+void ThreadPool<RetType>::queueTask(Task &&task) {
+  tasks.emplace(std::move(task));
 }
 
 template <typename RetType>
@@ -23,6 +28,7 @@ void ThreadPool<RetType>::process() {
   while (!tasks.empty()) {
     auto taskAmount = tasks.size();
     int amount = (threads > taskAmount ? taskAmount : threads);
+
     for (int i = 0; i < amount; i++) {
       auto task = tasks.front();
       tasks.pop();
