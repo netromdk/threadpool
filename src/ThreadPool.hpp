@@ -1,7 +1,5 @@
 #ifdef THREAD_POOL_H
 
-#include <thread>
-
 template <typename RetType>
 ThreadPool<RetType>::ThreadPool(int threads) {
   if (threads == -1) {
@@ -24,7 +22,20 @@ void ThreadPool<RetType>::queueTask(Task &&task) {
 }
 
 template <typename RetType>
-void ThreadPool<RetType>::process() {
+void ThreadPool<RetType>::process(Callback callback) {
+  if (!callback) {
+    _process();
+  }
+  else {
+    thread = std::thread([&]{
+        _process();
+        callback();
+      });
+  }
+}
+
+template <typename RetType>
+void ThreadPool<RetType>::_process() {
   while (!tasks.empty()) {
     auto taskAmount = tasks.size();
     int amount = (threads > taskAmount ? taskAmount : threads);
