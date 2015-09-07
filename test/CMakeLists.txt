@@ -24,3 +24,8 @@ add_executable(
   callback
   Callback.cpp
   )
+
+add_executable(
+  callback2
+  Callback2.cpp
+  )

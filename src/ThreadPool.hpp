@@ -44,6 +44,7 @@ void ThreadPool<RetType>::process(Callback callback) {
 
 template <typename RetType>
 void ThreadPool<RetType>::_process() {
+  std::lock_guard<std::mutex> lock(processMutex);
   futuresDone.clear();
 
   while (!tasks.empty()) {

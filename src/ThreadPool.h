@@ -1,6 +1,7 @@
 #ifndef THREAD_POOL_H
 #define THREAD_POOL_H
 
+#include <mutex>
 #include <queue>
 #include <thread>
 #include <vector>
@@ -40,6 +41,7 @@ private:
 
   int threads;
   std::thread thread;
+  std::mutex processMutex;
   TaskQueue tasks;
   FutVec futuresDone, futuresPending;
 };
