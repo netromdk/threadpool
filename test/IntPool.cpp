@@ -16,8 +16,19 @@ int main() {
   cout << "Processing.." << endl;
   pool.process();
 
-  auto &futures = pool.getFutures();
-  for (auto &future : futures) {
+  for (auto &future : pool.getFutures()) {
+    cout << "Result: " << future.get() << endl;
+  }
+
+  cout << "Enqueuing " << amount << " tasks.." << endl;
+  for (int i = 0; i < amount; i++) {
+    pool.queueTask([i]{ return i; });
+  }
+
+  cout << "Processing.." << endl;
+  pool.process();
+
+  for (auto &future : pool.getFutures()) {
     cout << "Result: " << future.get() << endl;
   }
   return 0;

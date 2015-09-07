@@ -44,6 +44,8 @@ void ThreadPool<RetType>::process(Callback callback) {
 
 template <typename RetType>
 void ThreadPool<RetType>::_process() {
+  futuresDone.clear();
+
   while (!tasks.empty()) {
     auto taskAmount = tasks.size();
     int amount = (threads > taskAmount ? taskAmount : threads);
