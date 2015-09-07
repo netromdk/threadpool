@@ -5,29 +5,6 @@ ThreadPool is a templated, include-only library written entirely in C++11. No li
 
 It works by simply adding a number of tasks to be computed and then processing them. By default it will use as many software threads as there are hardware threads on the system.
 
-Requirements
-============
-
-A C++11 compliant compiler (GCC 4.8+, Clang 3.3+ etc.) and CMake 3+.
-
-Tests
-=====
-
-While the library is include-only there are a few test programs which can be compiled and tried out:
-
-1. Extract source and go into the diretory.
-2. `mkdir build`
-3. `cd build`
-4. `cmake ..`
-5. `make`
-
-This will produce the following test programs in the "bin" folder:
-* intpool - Tests a simple pool with integer results.
-* voidpool - Tests a simple pool with no results.
-* sum - Asynchronally sums all numbers of a vector.
-* funcpool - Tests a simple pool with lvalue funcs.
-* callback - Tests non-blocking process() with a callback.
-
 Usage
 =====
 The pool is easy to use: add some tasks and process them:
@@ -83,3 +60,23 @@ pool.process([]{
   
 // Continues with program while tasks are being processed..
 ```
+
+Tests
+=====
+
+Requires a C++11 compliant compiler (GCC 4.8+, Clang 3.3+ etc.) and CMake 3+.
+
+While the library is include-only there are a few test programs which can be compiled and tried out:
+
+1. Extract source and go into the diretory.
+2. `mkdir build`
+3. `cd build`
+4. `cmake ..`
+5. `make`
+
+This will produce the following test programs in the "bin" folder:
+* intpool - Tests a simple pool with integer results.
+* voidpool - Tests a simple pool with no results.
+* sum - Asynchronally sums all numbers of a vector.
+* funcpool - Tests a simple pool with lvalue funcs.
+* callback - Tests non-blocking process() with a callback.
